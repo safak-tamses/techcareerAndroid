@@ -1,4 +1,4 @@
-package com.example.firstlessonscode.ders1.degiskenler;
+package com.example.android_with_java.ders1.odev;
 
 import java.time.Duration;
 import java.time.LocalDate;
