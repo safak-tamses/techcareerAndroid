@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Taşıma Uygulaması</string>
+    <string name="welcome">Hoş geldiniz !</string>
+    <string name="name">Şafak</string>
+    <string name="acctBalance">Hesap Bakiyesi</string>
+    <string name="balance">3000 ₺</string> <!-- Hesap Bakiyesi olarak kullanılıyorsa -->
+    <string name="search">Ara</string>
+    <string name="title">Taşıma Listesi</string>
+    <string name="motorcycle">Motorsiklet</string>
+    <string name="taxi">Taksi</string>
+    <string name="bus">Otobüs</string>
+    <string name="trum">Tramvay</string>
+</resources>
