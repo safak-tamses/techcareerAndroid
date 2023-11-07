@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Pizza Uygualaması</string>
+    <string name="urun">Pizza</string>
+    <string name="PizzaBaslik">Etli Peynirli</string>
+    <string name="peynirYazi">Peynir</string>
+    <string name="sucukYazi">Sucuk</string>
+    <string name="zeytinYazi">Zeytin</string>
+    <string name="biberYazi">Biber</string>
+    <string name="teslimatSure">20 dakika</string>
+    <string name="teslimatBaslik">Teslimat</string>
+    <string name="pizzaAciklama">Et sever , pizzamla tanışmaya hazılan !</string>
+    <string name="fiyat">168 ₺</string>
+    <string name="buttonYazi">SEPETE EKLE</string>
+</resources>
