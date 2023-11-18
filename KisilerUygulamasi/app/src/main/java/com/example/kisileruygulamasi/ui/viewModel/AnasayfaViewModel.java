@@ -10,13 +10,20 @@ import com.example.kisileruygulamasi.data.repo.KisilerDaoRepository;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.lifecycle.HiltViewModel;
+
+@HiltViewModel
 public class AnasayfaViewModel extends ViewModel {
     public MutableLiveData<List<Kisiler>> kisilerList ;
-    public KisilerDaoRepository kRepo = new KisilerDaoRepository();
+    public KisilerDaoRepository kRepo;
 
-    public AnasayfaViewModel() {
+    @Inject
+    public AnasayfaViewModel(KisilerDaoRepository kRepo) {
         kisileriYukle();
         this.kisilerList = kRepo.kisilerListesi;
+        this.kRepo = kRepo;
     }
 
     public void ara(String aramaKelimesi) {

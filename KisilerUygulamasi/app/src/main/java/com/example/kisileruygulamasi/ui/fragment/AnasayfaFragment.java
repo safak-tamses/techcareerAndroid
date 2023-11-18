@@ -23,6 +23,9 @@ import com.example.kisileruygulamasi.ui.viewModel.AnasayfaViewModel;
 
 import java.util.ArrayList;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class AnasayfaFragment extends Fragment {
     private FragmentAnasayfaBinding binding;
     private AnasayfaViewModel viewModel;

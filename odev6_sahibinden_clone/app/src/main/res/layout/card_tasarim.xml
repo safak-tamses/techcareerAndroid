@@ -8,13 +8,14 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewAraba"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="385dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_margin="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -37,20 +38,20 @@
 
             <TextView
                 android:id="@+id/textViewKonum"
-                android:layout_width="127dp"
-                android:layout_height="25dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="12dp"
                 android:text="İstanbul,Sultangazi"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageViewResim" />
 
             <TextView
                 android:id="@+id/textViewAciklama"
-                android:layout_width="294dp"
-                android:layout_height="29dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 android:text="Yeni Kasa Çiziksiz 83.000 km'de"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -60,10 +61,10 @@
 
             <TextView
                 android:id="@+id/textViewFiyat"
-                android:layout_width="87dp"
-                android:layout_height="25dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="12dp"
                 android:text="1.320.00 ₺"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />

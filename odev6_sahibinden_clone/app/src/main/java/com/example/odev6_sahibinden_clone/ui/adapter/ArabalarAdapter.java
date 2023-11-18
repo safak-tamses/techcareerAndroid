@@ -35,9 +35,23 @@ public class ArabalarAdapter extends RecyclerView.Adapter<ArabalarAdapter.CardTa
         Arabalar araba = arabalarListesi.get(position);
         CardTasarimBinding t = holder.tasarim;
         t.imageViewResim.setImageResource(mContext.getResources().getIdentifier(araba.getResim(),"drawable",mContext.getPackageName()));
-        t.textViewFiyat.setText("araba.getFiyat()");
-        t.textViewAciklama.setText(araba.getKimden());
-        t.textViewKonum.setText("araba.getPlakaUyruk()");
+
+        String fiyatString = String.valueOf(araba.getFiyat());
+
+        StringBuilder formattedFiyat = new StringBuilder();
+        int uzunluk = fiyatString.length();
+
+        for (int i = 0; i < uzunluk; i++) {
+            formattedFiyat.append(fiyatString.charAt(i));
+            int kalan = uzunluk - i - 1;
+            if (kalan > 0 && kalan % 3 == 0) {
+                formattedFiyat.append(".");
+            }
+        }
+
+        t.textViewFiyat.setText(formattedFiyat + " TL");
+        t.textViewAciklama.setText(araba.getAciklama());
+        t.textViewKonum.setText(araba.getYer());
         t.cardViewAraba.setOnClickListener(v -> {
             AnasayfaFragmentDirections.DetayGecis gecis = AnasayfaFragmentDirections.detayGecis(araba);
             Navigation.findNavController(v).navigate(gecis);

@@ -6,13 +6,17 @@ import java.util.Date;
 
 public class Arabalar implements Serializable {
     private String resim;
+    private String aciklama;
+    private String yer;
     private int fiyat;
-    private Date ilanTarih;
+    private String yayinlayan;
+    private String yerDetay;
+    private String ilanTarihi;
     private int ilanNo;
     private String marka;
     private String seri;
     private String model;
-    private Date yil;
+    private String yil;
     private String yakit;
     private String vites;
     private String aracDurumu;
@@ -22,20 +26,24 @@ public class Arabalar implements Serializable {
     private int motorHacmi;
     private String cekis;
     private String renk;
-    private boolean garanti;
-    private boolean agirHasarKaydi;
+    private String garanti;
+    private String agirHasar;
     private String plakaUyruk;
     private String kimden;
-    private boolean goruntuluAramaIleGorulebilir;
-    private boolean takas;
+    private String goruntuluArama;
+    private String takas;
 
     public Arabalar() {
     }
 
-    public Arabalar(String resim, int fiyat, Date ilanTarih, int ilanNo, String marka, String seri, String model, Date yil, String yakit, String vites, String aracDurumu, int km, String kasaTipi, int motorGucu, int motorHacmi, String cekis, String renk, boolean garanti, boolean agirHasarKaydi, String plakaUyruk, String kimden, boolean goruntuluAramaIleGorulebilir, boolean takas) {
+    public Arabalar(String resim, String aciklama, String yer, int fiyat, String yayinlayan, String yerDetay, String ilanTarihi, int ilanNo, String marka, String seri, String model, String yil, String yakit, String vites, String aracDurumu, int km, String kasaTipi, int motorGucu, int motorHacmi, String cekis, String renk, String garanti, String agirHasar, String plakaUyruk, String kimden, String goruntuluArama, String takas) {
         this.resim = resim;
+        this.aciklama = aciklama;
+        this.yer = yer;
         this.fiyat = fiyat;
-        this.ilanTarih = ilanTarih;
+        this.yayinlayan = yayinlayan;
+        this.yerDetay = yerDetay;
+        this.ilanTarihi = ilanTarihi;
         this.ilanNo = ilanNo;
         this.marka = marka;
         this.seri = seri;
@@ -51,11 +59,35 @@ public class Arabalar implements Serializable {
         this.cekis = cekis;
         this.renk = renk;
         this.garanti = garanti;
-        this.agirHasarKaydi = agirHasarKaydi;
+        this.agirHasar = agirHasar;
         this.plakaUyruk = plakaUyruk;
         this.kimden = kimden;
-        this.goruntuluAramaIleGorulebilir = goruntuluAramaIleGorulebilir;
+        this.goruntuluArama = goruntuluArama;
         this.takas = takas;
+    }
+
+    public String getResim() {
+        return resim;
+    }
+
+    public void setResim(String resim) {
+        this.resim = resim;
+    }
+
+    public String getAciklama() {
+        return aciklama;
+    }
+
+    public void setAciklama(String aciklama) {
+        this.aciklama = aciklama;
+    }
+
+    public String getYer() {
+        return yer;
+    }
+
+    public void setYer(String yer) {
+        this.yer = yer;
     }
 
     public int getFiyat() {
@@ -66,12 +98,28 @@ public class Arabalar implements Serializable {
         this.fiyat = fiyat;
     }
 
-    public Date getIlanTarih() {
-        return ilanTarih;
+    public String getYayinlayan() {
+        return yayinlayan;
     }
 
-    public void setIlanTarih(Date ilanTarih) {
-        this.ilanTarih = ilanTarih;
+    public void setYayinlayan(String yayinlayan) {
+        this.yayinlayan = yayinlayan;
+    }
+
+    public String getYerDetay() {
+        return yerDetay;
+    }
+
+    public void setYerDetay(String yerDetay) {
+        this.yerDetay = yerDetay;
+    }
+
+    public String getIlanTarihi() {
+        return ilanTarihi;
+    }
+
+    public void setIlanTarihi(String ilanTarihi) {
+        this.ilanTarihi = ilanTarihi;
     }
 
     public int getIlanNo() {
@@ -106,11 +154,11 @@ public class Arabalar implements Serializable {
         this.model = model;
     }
 
-    public Date getYil() {
+    public String getYil() {
         return yil;
     }
 
-    public void setYil(Date yil) {
+    public void setYil(String yil) {
         this.yil = yil;
     }
 
@@ -186,20 +234,20 @@ public class Arabalar implements Serializable {
         this.renk = renk;
     }
 
-    public boolean isGaranti() {
+    public String getGaranti() {
         return garanti;
     }
 
-    public void setGaranti(boolean garanti) {
+    public void setGaranti(String garanti) {
         this.garanti = garanti;
     }
 
-    public boolean isAgirHasarKaydi() {
-        return agirHasarKaydi;
+    public String getAgirHasar() {
+        return agirHasar;
     }
 
-    public void setAgirHasarKaydi(boolean agirHasarKaydi) {
-        this.agirHasarKaydi = agirHasarKaydi;
+    public void setAgirHasar(String agirHasar) {
+        this.agirHasar = agirHasar;
     }
 
     public String getPlakaUyruk() {
@@ -218,27 +266,19 @@ public class Arabalar implements Serializable {
         this.kimden = kimden;
     }
 
-    public boolean isGoruntuluAramaIleGorulebilir() {
-        return goruntuluAramaIleGorulebilir;
+    public String getGoruntuluArama() {
+        return goruntuluArama;
     }
 
-    public void setGoruntuluAramaIleGorulebilir(boolean goruntuluAramaIleGorulebilir) {
-        this.goruntuluAramaIleGorulebilir = goruntuluAramaIleGorulebilir;
+    public void setGoruntuluArama(String goruntuluArama) {
+        this.goruntuluArama = goruntuluArama;
     }
 
-    public boolean isTakas() {
+    public String getTakas() {
         return takas;
     }
 
-    public void setTakas(boolean takas) {
+    public void setTakas(String takas) {
         this.takas = takas;
-    }
-
-    public String getResim() {
-        return resim;
-    }
-
-    public void setResim(String resim) {
-        this.resim = resim;
     }
 }

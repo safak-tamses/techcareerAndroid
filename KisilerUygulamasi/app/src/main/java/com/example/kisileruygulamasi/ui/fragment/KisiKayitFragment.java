@@ -15,6 +15,9 @@ import com.example.kisileruygulamasi.R;
 import com.example.kisileruygulamasi.databinding.FragmentKisiKayitBinding;
 import com.example.kisileruygulamasi.ui.viewModel.KisiKayitViewModel;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class KisiKayitFragment extends Fragment {
 
     private FragmentKisiKayitBinding binding;
