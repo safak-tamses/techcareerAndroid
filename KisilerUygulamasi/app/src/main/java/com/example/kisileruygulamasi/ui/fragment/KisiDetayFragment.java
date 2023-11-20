@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import com.example.kisileruygulamasi.R;
 import com.example.kisileruygulamasi.data.entity.Kisiler;
 import com.example.kisileruygulamasi.databinding.FragmentKisiDetayBinding;
-import com.example.kisileruygulamasi.ui.viewModel.KisiDetayViewModel;
+import com.example.kisileruygulamasi.ui.viewmodel.KisiDetayViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -25,7 +25,7 @@ public class KisiDetayFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentKisiDetayBinding.inflate(inflater,container,false);
+        binding = FragmentKisiDetayBinding.inflate(inflater, container, false);
 
         KisiDetayFragmentArgs bundle = KisiDetayFragmentArgs.fromBundle(getArguments());
         Kisiler gelenKisi = bundle.getKisi();
@@ -48,5 +48,4 @@ public class KisiDetayFragment extends Fragment {
         super.onCreate(savedInstanceState);
         viewModel = new ViewModelProvider(this).get(KisiDetayViewModel.class);
     }
-
 }

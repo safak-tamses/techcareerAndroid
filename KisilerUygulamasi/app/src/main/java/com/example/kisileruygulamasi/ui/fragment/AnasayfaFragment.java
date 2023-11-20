@@ -19,7 +19,7 @@ import com.example.kisileruygulamasi.R;
 import com.example.kisileruygulamasi.data.entity.Kisiler;
 import com.example.kisileruygulamasi.databinding.FragmentAnasayfaBinding;
 import com.example.kisileruygulamasi.ui.adapter.KisilerAdapter;
-import com.example.kisileruygulamasi.ui.viewModel.AnasayfaViewModel;
+import com.example.kisileruygulamasi.ui.viewmodel.AnasayfaViewModel;
 
 import java.util.ArrayList;
 
@@ -29,23 +29,17 @@ import dagger.hilt.android.AndroidEntryPoint;
 public class AnasayfaFragment extends Fragment {
     private FragmentAnasayfaBinding binding;
     private AnasayfaViewModel viewModel;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentAnasayfaBinding.inflate(inflater, container, false);
 
         binding.kisilerRv.setLayoutManager(new LinearLayoutManager(requireContext()));
-//        binding.kisilerRv.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
-//        binding.kisilerRv.setLayoutManager(new StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL));
 
-        viewModel.kisilerList.observe(getViewLifecycleOwner(),kisilerL -> {
-            KisilerAdapter adapter = new KisilerAdapter(kisilerL, requireContext(), viewModel);
+        viewModel.kisilerListesi.observe(getViewLifecycleOwner(),kisilerListesi -> {
+            KisilerAdapter adapter = new KisilerAdapter(kisilerListesi,requireContext(),viewModel);
             binding.kisilerRv.setAdapter(adapter);
         });
-
-
-
 
         binding.fab.setOnClickListener(v -> {
             Navigation.findNavController(v).navigate(R.id.kisiKayitGecis);
@@ -53,7 +47,7 @@ public class AnasayfaFragment extends Fragment {
 
         binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public boolean onQueryTextSubmit(String query) {//Klavye üzerindeki arama ikonu ile çalışır.
+            public boolean onQueryTextSubmit(String query) {//Klavye üzerindeki arama iconu ile çalışır.
                 viewModel.ara(query);
                 return true;
             }

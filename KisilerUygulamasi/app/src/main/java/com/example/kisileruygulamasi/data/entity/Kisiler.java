@@ -2,10 +2,11 @@ package com.example.kisileruygulamasi.data.entity;
 
 import java.io.Serializable;
 
-public class Kisiler implements Serializable { //data transferi
+public class Kisiler implements Serializable {
     private int kisi_id;
     private String kisi_ad;
     private String kisi_tel;
+
     public Kisiler() {
     }
 

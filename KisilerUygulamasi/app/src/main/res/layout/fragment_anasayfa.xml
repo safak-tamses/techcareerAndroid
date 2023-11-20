@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:elevation="5dp"
     tools:context=".ui.fragment.AnasayfaFragment">
 
     <androidx.appcompat.widget.Toolbar
@@ -16,7 +17,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:subtitleTextColor="#FFFFFF"
         app:title="Kişiler" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -39,7 +39,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@color/white"
-        android:elevation="5dp"
+        android:elevation="2dp"
         android:queryHint="Ara"
         app:layout_constraintBottom_toTopOf="@+id/kisilerRv"
         app:layout_constraintEnd_toEndOf="parent"

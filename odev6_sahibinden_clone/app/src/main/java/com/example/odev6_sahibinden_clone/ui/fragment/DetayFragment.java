@@ -63,6 +63,34 @@ public class DetayFragment extends Fragment {
 
         binding.textViewYil.setText(gelenAraba.getYil());
 
+        binding.textViewYakit.setText(gelenAraba.getYakit());
+
+        binding.textViewVites.setText(gelenAraba.getVites());
+
+        binding.textViewAracDurumu.setText(gelenAraba.getAracDurumu());
+
+        binding.textViewKM.setText(String.valueOf(gelenAraba.getKm()));
+
+        binding.textViewKasaTipi.setText(gelenAraba.getKasaTipi());
+
+        binding.textViewMotorGucu.setText(gelenAraba.getMotorGucu() + " hp");
+
+        binding.textViewMotorHacmi.setText(gelenAraba.getMotorHacmi() + " cc");
+
+        binding.textViewCekis.setText(gelenAraba.getCekis());
+
+        binding.textViewRenk.setText(gelenAraba.getRenk());
+
+        binding.textViewGaranti.setText(gelenAraba.getGaranti());
+
+        binding.textViewAgirHasarKayitli.setText(gelenAraba.getAgirHasar());
+
+        binding.textViewPlaka.setText(gelenAraba.getPlakaUyruk());
+
+        binding.textViewKimden.setText(gelenAraba.getKimden());
+
+        binding.textViewArama.setText(gelenAraba.getGoruntuluArama());
+
         return binding.getRoot();
     }
 }

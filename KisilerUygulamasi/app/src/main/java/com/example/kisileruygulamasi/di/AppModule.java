@@ -2,7 +2,6 @@ package com.example.kisileruygulamasi.di;
 
 import com.example.kisileruygulamasi.data.repo.KisilerDaoRepository;
 
-import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import dagger.Module;

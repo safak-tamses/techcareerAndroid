@@ -13,19 +13,18 @@ import android.view.ViewGroup;
 
 import com.example.kisileruygulamasi.R;
 import com.example.kisileruygulamasi.databinding.FragmentKisiKayitBinding;
-import com.example.kisileruygulamasi.ui.viewModel.KisiKayitViewModel;
+import com.example.kisileruygulamasi.ui.viewmodel.KisiKayitViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
 public class KisiKayitFragment extends Fragment {
-
     private FragmentKisiKayitBinding binding;
     private KisiKayitViewModel viewModel;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentKisiKayitBinding.inflate(inflater,container,false);
+        binding = FragmentKisiKayitBinding.inflate(inflater, container, false);
 
         binding.buttonKaydet.setOnClickListener(v -> {
             String kisi_ad = binding.editTextKisiAd.getText().toString();
@@ -42,6 +41,4 @@ public class KisiKayitFragment extends Fragment {
         super.onCreate(savedInstanceState);
         viewModel = new ViewModelProvider(this).get(KisiKayitViewModel.class);
     }
-
-
 }
