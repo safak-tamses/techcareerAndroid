@@ -1,10 +1,13 @@
 package com.example.bitirmeprojesi.di;
 
+import com.example.bitirmeprojesi.data.repo.FavoriYemekDaoRepository;
 import com.example.bitirmeprojesi.data.repo.SepetDaoRepository;
 import com.example.bitirmeprojesi.data.repo.YemeklerDaoRepository;
 import com.example.bitirmeprojesi.retrofit.ApiUtils;
 import com.example.bitirmeprojesi.retrofit.SepetDao;
 import com.example.bitirmeprojesi.retrofit.YemeklerDao;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import javax.inject.Singleton;
 
@@ -37,4 +40,15 @@ public class AppModule {
     @Provides
     @Singleton
     public SepetDao provideSepetDao() {return ApiUtils.getSepetDao();}
+
+    @Provides
+    @Singleton
+    public FavoriYemekDaoRepository provideFavoriYemekDaoRepository(CollectionReference collectionReference){
+        return new FavoriYemekDaoRepository(collectionReference);
+    }
+    @Provides
+    @Singleton
+    public CollectionReference provideCollectionReference(){
+        return FirebaseFirestore.getInstance().collection("Favori_Yemekler");
+    }
 }

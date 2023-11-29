@@ -2,11 +2,13 @@ package com.example.bitirmeprojesi.data.repo;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.bitirmeprojesi.data.entity.DTO.GcSepet;
 import com.example.bitirmeprojesi.data.entity.DTO.YemeklerCevap;
 import com.example.bitirmeprojesi.data.entity.Yemekler;
 import com.example.bitirmeprojesi.retrofit.YemeklerDao;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,5 +37,8 @@ public class YemeklerDaoRepository {
             }
         });
     }
+
+
+
 
 }

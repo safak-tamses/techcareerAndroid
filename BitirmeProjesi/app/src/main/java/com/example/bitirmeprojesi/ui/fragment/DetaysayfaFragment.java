@@ -15,6 +15,7 @@ import com.example.bitirmeprojesi.data.entity.DTO.SepetEkle;
 import com.example.bitirmeprojesi.data.entity.Yemekler;
 import com.example.bitirmeprojesi.databinding.FragmentDetaysayfaBinding;
 import com.example.bitirmeprojesi.ui.viewmodel.DetayViewModel;
+import com.google.android.material.snackbar.Snackbar;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -35,24 +36,26 @@ public class DetaysayfaFragment extends Fragment {
         Glide.with(this).load(url).override(300, 300).into(binding.imageViewUrununResmi);
 
         binding.textViewUrunIsmi.setText(gelenUrun.getYemek_adi());
-        binding.textViewUrunTutar.setText(String.valueOf(gelenUrun.getYemek_fiyat()));
+        binding.textViewUrunTutar.setText(String.valueOf(gelenUrun.getYemek_fiyat() + " ₺"));
+        binding.textViewAdet.setText("1");
+        binding.textViewToplam.setText("Toplam: "+gelenUrun.getYemek_fiyat() + " ₺");
 
-        binding.imageViewArti.setOnClickListener(v -> {
+        binding.imageViewrti.setOnClickListener(v -> {
             String adetMetni = binding.textViewAdet.getText().toString();
             int tutar = gelenUrun.getYemek_fiyat();
             int adet = Integer.parseInt(adetMetni) + 1;
             binding.textViewAdet.setText(String.valueOf(adet));
-            binding.textViewToplam.setText(String.valueOf(adet * tutar) + " ₺") ;
+            binding.textViewToplam.setText("Toplam: " + (adet * tutar) + " ₺") ;
         });
 
         binding.imageViewEksi.setOnClickListener(v -> {
             String adetMetni = binding.textViewAdet.getText().toString();
             int tutar = gelenUrun.getYemek_fiyat();
             int adet = Integer.parseInt(adetMetni);
-            if (adet > 0) {
+            if (adet > 1) {
                 adet--;
                 binding.textViewAdet.setText(String.valueOf(adet));
-                binding.textViewToplam.setText(String.valueOf(adet * tutar) + " ₺");
+                binding.textViewToplam.setText("Toplam: " + (adet * tutar) + " ₺");
             }
         });
 
@@ -67,6 +70,7 @@ public class DetaysayfaFragment extends Fragment {
                         adet
                 );
                 viewModel.sepeteUrunEkle(sepetEkle);
+            Snackbar.make(binding.getRoot(), "Ürün sepete eklendi", Snackbar.LENGTH_SHORT).show();
         });
 
 

@@ -34,43 +34,34 @@
         android:id="@+id/textViewUrunTutar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="0 ₺"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="@+id/imageViewUrununResmi"
         app:layout_constraintStart_toStartOf="@+id/imageViewUrununResmi"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewUrununResmi" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewUrunIsmi" />
 
     <TextView
         android:id="@+id/textViewUrunIsmi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="Izgara Somon"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="@+id/imageViewUrununResmi"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/imageViewUrununResmi"
-        app:layout_constraintTop_toBottomOf="@+id/textViewUrunTutar" />
-
-    <ImageView
-        android:id="@+id/imageViewArti"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:src="@drawable/arti"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewAdet"
-        app:layout_constraintStart_toEndOf="@+id/textViewAdet"
-        app:layout_constraintTop_toTopOf="@+id/textViewAdet" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewUrununResmi" />
 
     <ImageView
         android:id="@+id/imageViewEksi"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/eksi"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewUrunIsmi" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewUrunTutar" />
 
     <TextView
         android:id="@+id/textViewAdet"
@@ -96,13 +87,23 @@
 
     <TextView
         android:id="@+id/textViewToplam"
-        android:layout_width="144dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
         android:text="0 ₺"
         android:textAlignment="center"
-        android:textSize="36sp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewEksi"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewUrunIsmi" />
+        app:layout_constraintTop_toTopOf="@+id/imageViewEksi" />
+
+    <ImageView
+        android:id="@+id/imageViewrti"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/plus"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewEksi"
+        app:layout_constraintStart_toEndOf="@+id/textViewAdet"
+        app:layout_constraintTop_toTopOf="@+id/imageViewEksi" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

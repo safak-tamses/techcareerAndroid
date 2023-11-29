@@ -11,11 +11,14 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import com.example.bitirmeprojesi.R;
 import com.example.bitirmeprojesi.databinding.FragmentAnasayfaBinding;
 import com.example.bitirmeprojesi.ui.adapter.YemekCardAdapter;
 import com.example.bitirmeprojesi.ui.viewmodel.AnasayfaViewModel;
+
+import java.util.ArrayList;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -23,6 +26,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 public class AnasayfaFragment extends Fragment {
     private FragmentAnasayfaBinding binding;
     private AnasayfaViewModel viewModel;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -33,14 +37,36 @@ public class AnasayfaFragment extends Fragment {
         GridLayoutManager layoutManager = new GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false);
         binding.kisilerRv.setLayoutManager(layoutManager);
 
-        binding.imageViewSepeteGit.setOnClickListener(v -> {
+        binding.imageViewHomeSepet.setOnClickListener(v -> {
             Navigation.findNavController(v).navigate(R.id.sepeteGecis);
+        });
+        binding.imageViewHomeFavori.setOnClickListener(v -> {
+            Navigation.findNavController(v).navigate(R.id.anasayfadanFavoriyeGecis);
         });
 
 
-        viewModel.getYemeklerListesi().observe(getViewLifecycleOwner(),yemeklerListesi -> {
-            YemekCardAdapter adapter = new YemekCardAdapter(yemeklerListesi,requireContext(),viewModel);
+        viewModel.getAramaSonucu().observe(getViewLifecycleOwner(), aramaListesi -> {
+            YemekCardAdapter adapter = new YemekCardAdapter(aramaListesi, requireContext(), viewModel);
             binding.kisilerRv.setAdapter(adapter);
+        });
+        viewModel.getYemeklerListesi().observe(getViewLifecycleOwner(), yemeklerListesi -> {
+            YemekCardAdapter adapter = new YemekCardAdapter(yemeklerListesi, requireContext(), viewModel);
+            binding.kisilerRv.setAdapter(adapter);
+        });
+
+
+        binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                viewModel.ara(query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                viewModel.ara(newText);
+                return true;
+            }
         });
 
 
@@ -59,3 +85,5 @@ public class AnasayfaFragment extends Fragment {
         viewModel.yemekleriYukle();
     }
 }
+
+

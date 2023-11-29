@@ -1,11 +1,16 @@
 package com.example.bitirmeprojesi.ui.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.LinearGradient;
+import android.graphics.Shader;
+import android.graphics.drawable.GradientDrawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -40,39 +45,41 @@ public class SepetCardAdapter extends RecyclerView.Adapter<SepetCardAdapter.Sepe
 
     @Override
     public void onBindViewHolder(@NonNull SepetCardTasarimTutucu holder, int position) {
-        Log.d("SepetCardAdapter", "onBindViewHolder called for position: " + position);
-        List<GcSepet> gcSepetList = sepetListesi;
-        List<GcSepet> toplanmis= birlestir(gcSepetList);
-
-        GcSepet sepet = toplanmis.get(position);
+        GcSepet sepet = sepetListesi.get(position);
         SepetCardTasarimBinding t = holder.tasarim;
-        t.textViewUrunAdi.setText("Yemek Adı: "+sepet.getYemek_adi());
-        t.textViewUrunFiyati.setText("Fiyat: "+sepet.getYemek_fiyat() + " ₺");
-        t.textViewUrunAdet.setText("Adet: "+sepet.getYemek_siparis_adet());
 
-        String url = "http://kasimadalan.pe.hu/yemekler/resimler/" + sepet.getYemek_resim_adi();
-        Glide.with(mContext).load(url).override(300, 300).into(t.imageViewUrunResim);
+        if (viewModel.getSepetListesi().getValue() != null){
+            layoutDegistir(t.consId);
 
-        String fiyat = sepet.getYemek_fiyat().toString();
-        int fiyatT = Integer.parseInt(fiyat);
-        String adet = sepet.getYemek_siparis_adet().toString();
-        int adetT = Integer.parseInt(adet);
-        String id = sepet.getSepet_yemek_id().toString();
-        int idT = Integer.parseInt(id);
+            t.textViewUrunAdi.setText("Yemek Adı: "+sepet.getYemek_adi());
+            t.textViewUrunFiyati.setText("Fiyat: "+sepet.getYemek_fiyat() + " ₺");
+            t.textViewUrunAdet.setText("Adet: "+sepet.getYemek_siparis_adet());
 
-        int toplamTutar = fiyatT * adetT;
-        t.textViewToplamTutar.setText("Toplam tutar: " + toplamTutar + " ₺");
+            String url = "http://kasimadalan.pe.hu/yemekler/resimler/" + sepet.getYemek_resim_adi();
+            Glide.with(mContext).load(url).override(300, 300).into(t.imageViewUrunResim);
+
+            String fiyat = sepet.getYemek_fiyat().toString();
+            int fiyatT = Integer.parseInt(fiyat);
+            String adet = sepet.getYemek_siparis_adet().toString();
+            int adetT = Integer.parseInt(adet);
+            String id = sepet.getSepet_yemek_id().toString();
+            int idT = Integer.parseInt(id);
+
+            int toplamTutar = fiyatT * adetT;
+            t.textViewToplamTutar.setText("Toplam tutar: " + toplamTutar + " ₺");
 
 
-        t.imageViewSilResmi.setOnClickListener(v -> {
-            viewModel.sepetiSil(idT);
-        });
+            t.imageViewSilResmi.setOnClickListener(v -> {
+                viewModel.sepetiSil(idT);
+                viewModel.sepetiYukle();
+            });
+        }
+
 
     }
 
     @Override
     public int getItemCount() {
-        Log.d("SepetCardAdapter", "getItemCount called");
         if (sepetListesi == null) {
             return 0;
         }
@@ -100,4 +107,25 @@ public class SepetCardAdapter extends RecyclerView.Adapter<SepetCardAdapter.Sepe
         }
         return new ArrayList<>(birlestirilmisMap.values());
     }
+
+    private void layoutDegistir(ConstraintLayout constraintLayout) {
+
+        int startColor = Color.parseColor("#FFE4C6");
+        int endColor = Color.parseColor("#A96112");
+
+        GradientDrawable gradientDrawable = new GradientDrawable(
+                GradientDrawable.Orientation.TOP_BOTTOM, new int[]{startColor,endColor});
+
+        gradientDrawable.setCornerRadii(new float[]{30, 30, 30, 30, 30, 30, 30, 30});
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
+            constraintLayout.setBackground(gradientDrawable);
+        } else {
+            constraintLayout.setBackgroundDrawable(gradientDrawable);
+        }
+
+        // Log mesajı ekle
+        Log.d("SepetCardAdapter", "layoutDegistir fonksiyonu çağrıldı.");
+    }
+
 }

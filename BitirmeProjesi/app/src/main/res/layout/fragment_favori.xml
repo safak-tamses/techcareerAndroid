@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f27a1a"
-    tools:context=".ui.fragment.SepetFragment">
+    tools:context=".ui.fragment.FavoriFragment">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
+        android:id="@+id/toolbar3"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
@@ -17,18 +17,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Sepetteki Ürünlerim"
+        app:title="Favori Ürünler"
         app:titleTextColor="#FFFFFF" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/sepetRv"
+        android:id="@+id/favoriRv"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar3" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
@@ -37,42 +37,45 @@
         android:background="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sepetRv">
+        app:layout_constraintTop_toBottomOf="@+id/favoriRv"
+        app:layout_constraintVertical_bias="0.0">
 
         <ImageView
-            android:id="@+id/imageViewSepetHome"
+            android:id="@+id/imageViewFavAnasayfa"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_marginBottom="1dp"
             android:src="@drawable/homesiyah"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageViewSepetFavori"
+            app:layout_constraintEnd_toStartOf="@+id/imageView2"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.5" />
 
         <ImageView
-            android:id="@+id/imageViewSepetFavori"
+            android:id="@+id/imageView2"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/kalpsiyah"
+            android:src="@drawable/kalpturuncu"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageViewSepet"
+            app:layout_constraintEnd_toStartOf="@+id/imageViewFavSepet"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/imageViewSepetHome"
+            app:layout_constraintStart_toEndOf="@+id/imageViewFavAnasayfa"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.5" />
 
         <ImageView
-            android:id="@+id/imageViewSepet"
+            android:id="@+id/imageViewFavSepet"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/sepetturuncu"
+            android:src="@drawable/sepetsiyah"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/imageViewSepetFavori"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.5" />
     </androidx.constraintlayout.widget.ConstraintLayout>

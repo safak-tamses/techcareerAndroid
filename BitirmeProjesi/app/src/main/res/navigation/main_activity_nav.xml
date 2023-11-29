@@ -16,6 +16,9 @@
         <action
             android:id="@+id/detayaGecis"
             app:destination="@id/detaysayfaFragment" />
+        <action
+            android:id="@+id/action_anasayfaFragment_to_favoriFragment"
+            app:destination="@id/anasayfadanFavoriyeGecis" />
     </fragment>
     <fragment
         android:id="@+id/detaysayfaFragment"
@@ -30,5 +33,24 @@
         android:id="@+id/sepetFragment"
         android:name="com.example.bitirmeprojesi.ui.fragment.SepetFragment"
         android:label="fragment_sepet"
-        tools:layout="@layout/fragment_sepet" />
+        tools:layout="@layout/fragment_sepet" >
+        <action
+            android:id="@+id/sepettenAnaSayfayaGecis"
+            app:destination="@id/anasayfaFragment" />
+        <action
+            android:id="@+id/sepettenFavoriyeGecis"
+            app:destination="@id/anasayfadanFavoriyeGecis" />
+    </fragment>
+    <fragment
+        android:id="@+id/anasayfadanFavoriyeGecis"
+        android:name="com.example.bitirmeprojesi.ui.fragment.FavoriFragment"
+        android:label="fragment_favori"
+        tools:layout="@layout/fragment_favori" >
+        <action
+            android:id="@+id/favoridenAnasayfayaGecis"
+            app:destination="@id/anasayfaFragment" />
+        <action
+            android:id="@+id/favoridenSepeteGecis"
+            app:destination="@id/sepetFragment" />
+    </fragment>
 </navigation>

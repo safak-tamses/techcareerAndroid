@@ -1,7 +1,6 @@
 package com.example.bitirmeprojesi.retrofit;
 
 import com.example.bitirmeprojesi.data.entity.DTO.CRUDCevap;
-import com.example.bitirmeprojesi.data.entity.DTO.GcSepet;
 import com.example.bitirmeprojesi.data.entity.DTO.SepetCevap;
 
 import retrofit2.Call;
