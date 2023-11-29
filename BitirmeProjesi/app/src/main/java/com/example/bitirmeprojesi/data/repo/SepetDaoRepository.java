@@ -78,11 +78,10 @@ public class SepetDaoRepository {
                 .enqueue(new Callback<CRUDCevap>() {
                     @Override
                     public void onResponse(Call<CRUDCevap> call, Response<CRUDCevap> response) {
-                        sepettekiYemekleriGetir();
-                        if (sepetListesi.getValue().size() == 0){
-                            Log.e("Buraneremk","hololo");
+                        if (response.isSuccessful()) {
+                            sepetListesi.postValue(null);
+                            sepettekiYemekleriGetir();
                         }
-                        sepetListesi.postValue(sepetListesi.getValue());
                     }
 
                     @Override

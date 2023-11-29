@@ -26,6 +26,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:text="Ürün İsmi"
+                android:textSize="16sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/textViewFavoriUrunFiyati"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -35,6 +37,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ürün Fiyatı"
+                android:textSize="16sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/textViewFavoriUrunAdi"
                 app:layout_constraintStart_toStartOf="@+id/textViewFavoriUrunAdi"
@@ -53,14 +57,14 @@
                 app:srcCompat="@drawable/sepetsiyah" />
 
             <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="4dp"
+                android:id="@+id/imageViewFavSil"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/exit" />
+                app:srcCompat="@drawable/trahs" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

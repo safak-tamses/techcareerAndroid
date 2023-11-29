@@ -18,6 +18,7 @@ import com.example.bitirmeprojesi.data.entity.DTO.GcSepet;
 import com.example.bitirmeprojesi.data.entity.Sepet;
 import com.example.bitirmeprojesi.databinding.SepetCardTasarimBinding;
 import com.example.bitirmeprojesi.ui.viewmodel.SepetViewModel;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,9 +52,9 @@ public class SepetCardAdapter extends RecyclerView.Adapter<SepetCardAdapter.Sepe
         if (viewModel.getSepetListesi().getValue() != null){
             layoutDegistir(t.consId);
 
-            t.textViewUrunAdi.setText("Yemek Adı: "+sepet.getYemek_adi());
-            t.textViewUrunFiyati.setText("Fiyat: "+sepet.getYemek_fiyat() + " ₺");
-            t.textViewUrunAdet.setText("Adet: "+sepet.getYemek_siparis_adet());
+            t.textViewUrunAdi.setText(sepet.getYemek_adi());
+            t.textViewUrunFiyati.setText(sepet.getYemek_fiyat() + " ₺");
+            t.textViewUrunAdet.setText(sepet.getYemek_siparis_adet());
 
             String url = "http://kasimadalan.pe.hu/yemekler/resimler/" + sepet.getYemek_resim_adi();
             Glide.with(mContext).load(url).override(300, 300).into(t.imageViewUrunResim);
@@ -66,12 +67,15 @@ public class SepetCardAdapter extends RecyclerView.Adapter<SepetCardAdapter.Sepe
             int idT = Integer.parseInt(id);
 
             int toplamTutar = fiyatT * adetT;
-            t.textViewToplamTutar.setText("Toplam tutar: " + toplamTutar + " ₺");
+            t.textViewToplamTutar.setText(toplamTutar + " ₺");
 
 
             t.imageViewSilResmi.setOnClickListener(v -> {
-                viewModel.sepetiSil(idT);
-                viewModel.sepetiYukle();
+                Snackbar.make(v, sepet.getYemek_adi() +" adlı ürün sepetinizden silinsin mi?",Snackbar.LENGTH_SHORT)
+                        .setAction("EVET",v1 -> {
+                            viewModel.sepetiSil(idT);
+                        })
+                        .show();
             });
         }
 
@@ -109,12 +113,11 @@ public class SepetCardAdapter extends RecyclerView.Adapter<SepetCardAdapter.Sepe
     }
 
     private void layoutDegistir(ConstraintLayout constraintLayout) {
-
-        int startColor = Color.parseColor("#FFE4C6");
-        int endColor = Color.parseColor("#A96112");
+        int startColor = Color.parseColor("#ffc98d");
+        int endColor = Color.parseColor("#81f4d4");
 
         GradientDrawable gradientDrawable = new GradientDrawable(
-                GradientDrawable.Orientation.TOP_BOTTOM, new int[]{startColor,endColor});
+                GradientDrawable.Orientation.TOP_BOTTOM, new int[]{startColor, endColor});
 
         gradientDrawable.setCornerRadii(new float[]{30, 30, 30, 30, 30, 30, 30, 30});
 
@@ -123,9 +126,6 @@ public class SepetCardAdapter extends RecyclerView.Adapter<SepetCardAdapter.Sepe
         } else {
             constraintLayout.setBackgroundDrawable(gradientDrawable);
         }
-
-        // Log mesajı ekle
-        Log.d("SepetCardAdapter", "layoutDegistir fonksiyonu çağrıldı.");
     }
 
 }

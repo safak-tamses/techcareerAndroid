@@ -114,9 +114,6 @@ public class YemekCardAdapter extends RecyclerView.Adapter<YemekCardAdapter.Yeme
         } else {
             constraintLayout.setBackgroundDrawable(gradientDrawable);
         }
-
-        // Log mesajı ekle
-        Log.d("SepetCardAdapter", "layoutDegistir fonksiyonu çağrıldı.");
     }
 
 }

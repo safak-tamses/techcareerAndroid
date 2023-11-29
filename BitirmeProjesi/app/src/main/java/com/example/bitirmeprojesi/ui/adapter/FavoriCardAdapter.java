@@ -16,6 +16,7 @@ import com.example.bitirmeprojesi.data.entity.VeriTabaniYemek;
 import com.example.bitirmeprojesi.data.entity.Yemekler;
 import com.example.bitirmeprojesi.databinding.FavoriCardTasarimBinding;
 import com.example.bitirmeprojesi.ui.viewmodel.FavoriViewModel;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -51,9 +52,13 @@ public class FavoriCardAdapter extends RecyclerView.Adapter<FavoriCardAdapter.Fa
 
             t.textViewFavoriUrunAdi.setText(fav.getYemek_adi());
             t.textViewFavoriUrunFiyati.setText(fav.getYemek_fiyat() + " ₺");
-            t.imageView.setOnClickListener(v -> {
-                viewModel.silFavori(fav.getYemek_id());
-                viewModel.favorileriYukle();
+            t.imageViewFavSil.setOnClickListener(v -> {
+                Snackbar.make(v, fav.getYemek_adi() +" adlı ürün favorilerinizden silinsin mi?",Snackbar.LENGTH_SHORT)
+                        .setAction("EVET",v1 -> {
+                            viewModel.silFavori(fav.getYemek_id());
+                            viewModel.favorileriYukle();
+                        })
+                        .show();
             });
         }
     }
@@ -77,9 +82,8 @@ public class FavoriCardAdapter extends RecyclerView.Adapter<FavoriCardAdapter.Fa
     }
 
     private void layoutDegistir(ConstraintLayout constraintLayout) {
-
-        int startColor = Color.parseColor("#FFE4C6");
-        int endColor = Color.parseColor("#A96112");
+        int startColor = Color.parseColor("#ffc98d");
+        int endColor = Color.parseColor("#81f4d4");
 
         GradientDrawable gradientDrawable = new GradientDrawable(
                 GradientDrawable.Orientation.TOP_BOTTOM, new int[]{startColor, endColor});
@@ -91,8 +95,4 @@ public class FavoriCardAdapter extends RecyclerView.Adapter<FavoriCardAdapter.Fa
         } else {
             constraintLayout.setBackgroundDrawable(gradientDrawable);
         }
-
-        // Log mesajı ekle
-        Log.d("SepetCardAdapter", "layoutDegistir fonksiyonu çağrıldı.");
-    }
-}
+    }}
