@@ -22,11 +22,6 @@ public class FavoriViewModel extends ViewModel {
         favorileriYukle();
         yemekListesi = frepo.yemekListesi;
     }
-    public void kaydetFavori(String yemek_adi, String yemek_resim_adi, int yemek_fiyat){
-        frepo.kaydet(yemek_adi,yemek_resim_adi,yemek_fiyat);
-        favorileriYukle();
-        yemekListesi = frepo.yemekListesi;
-    }
     public void silFavori(String yemek_id){ frepo.sil(yemek_id); }
 
     public void favorileriYukle(){ frepo.favorileriYukle(); }

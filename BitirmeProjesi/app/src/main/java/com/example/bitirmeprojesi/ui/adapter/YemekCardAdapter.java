@@ -72,9 +72,15 @@ public class YemekCardAdapter extends RecyclerView.Adapter<YemekCardAdapter.Yeme
             });
 
             t.imageViewFavoriEkle.setOnClickListener(v -> {
-                viewModel.favoriEkle(yemek.getYemek_adi(), yemek.getYemek_resim_adi(), yemek.getYemek_fiyat());
-                Snackbar snackbar = Snackbar.make(t.getRoot(), "Ürün favorilerinize eklendi", Snackbar.LENGTH_SHORT);
-                snackbar.show();
+                ;
+                if (viewModel.favoriEkle(yemek.getYemek_adi(), yemek.getYemek_resim_adi(), yemek.getYemek_fiyat())){
+                    Snackbar.make(t.getRoot(),  "Ürün favorilerinize eklendi",Snackbar.LENGTH_SHORT)
+                            .show();
+                } else {
+                    Snackbar.make(t.getRoot(),  "Ürün favorilerinizde zaten mevcut",Snackbar.LENGTH_SHORT)
+                            .show();
+                }
+
             });
 
 

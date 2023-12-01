@@ -49,35 +49,36 @@ public class SepetCardAdapter extends RecyclerView.Adapter<SepetCardAdapter.Sepe
         GcSepet sepet = sepetListesi.get(position);
         SepetCardTasarimBinding t = holder.tasarim;
 
-        if (viewModel.getSepetListesi().getValue() != null){
-            layoutDegistir(t.consId);
+            if (viewModel.getSepetListesi().getValue() != null){
+                layoutDegistir(t.consId);
 
-            t.textViewUrunAdi.setText(sepet.getYemek_adi());
-            t.textViewUrunFiyati.setText(sepet.getYemek_fiyat() + " ₺");
-            t.textViewUrunAdet.setText(sepet.getYemek_siparis_adet());
+                t.textViewUrunAdi.setText(sepet.getYemek_adi());
+                t.textViewUrunFiyati.setText(sepet.getYemek_fiyat() + " ₺");
+                t.textViewUrunAdet.setText(sepet.getYemek_siparis_adet());
 
-            String url = "http://kasimadalan.pe.hu/yemekler/resimler/" + sepet.getYemek_resim_adi();
-            Glide.with(mContext).load(url).override(300, 300).into(t.imageViewUrunResim);
+                String url = "http://kasimadalan.pe.hu/yemekler/resimler/" + sepet.getYemek_resim_adi();
+                Glide.with(mContext).load(url).override(300, 300).into(t.imageViewUrunResim);
 
-            String fiyat = sepet.getYemek_fiyat().toString();
-            int fiyatT = Integer.parseInt(fiyat);
-            String adet = sepet.getYemek_siparis_adet().toString();
-            int adetT = Integer.parseInt(adet);
-            String id = sepet.getSepet_yemek_id().toString();
-            int idT = Integer.parseInt(id);
+                String fiyat = sepet.getYemek_fiyat().toString();
+                int fiyatT = Integer.parseInt(fiyat);
+                String adet = sepet.getYemek_siparis_adet().toString();
+                int adetT = Integer.parseInt(adet);
 
-            int toplamTutar = fiyatT * adetT;
+
+                int toplamTutar = fiyatT * adetT;
             t.textViewToplamTutar.setText(toplamTutar + " ₺");
 
 
             t.imageViewSilResmi.setOnClickListener(v -> {
                 Snackbar.make(v, sepet.getYemek_adi() +" adlı ürün sepetinizden silinsin mi?",Snackbar.LENGTH_SHORT)
                         .setAction("EVET",v1 -> {
-                            viewModel.sepetiSil(idT);
+                            viewModel.sepetiSil(sepet.getYemek_adi());
                         })
                         .show();
             });
-        }
+        } else {
+
+            }
 
 
     }

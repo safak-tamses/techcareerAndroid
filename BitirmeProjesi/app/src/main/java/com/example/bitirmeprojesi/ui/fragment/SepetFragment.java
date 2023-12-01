@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,8 @@ import com.example.bitirmeprojesi.R;
 import com.example.bitirmeprojesi.databinding.FragmentSepetBinding;
 import com.example.bitirmeprojesi.ui.adapter.SepetCardAdapter;
 import com.example.bitirmeprojesi.ui.viewmodel.SepetViewModel;
+
+import java.util.ArrayList;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -31,10 +34,21 @@ public class SepetFragment extends Fragment {
 
         binding.sepetRv.setLayoutManager(new LinearLayoutManager(requireContext()));
 
+
+        binding.textViewSepetBos.setText("Sepetinizde ürün bulunmuyor.");
+
         viewModel.sepetListesi.observe(getViewLifecycleOwner(), sepetListesi -> {
-            SepetCardAdapter adapter = new SepetCardAdapter(sepetListesi, requireContext(), viewModel);
-            binding.sepetRv.setAdapter(adapter);
+            if (sepetListesi != null && sepetListesi.size() > 0){
+                binding.textViewSepetBos.setText("");
+                SepetCardAdapter adapter = new SepetCardAdapter(sepetListesi, requireContext(), viewModel);
+                binding.sepetRv.setAdapter(adapter);
+            } else {
+                binding.textViewSepetBos.setText("Sepetinizde ürün bulunmuyor.");
+                SepetCardAdapter adapter = new SepetCardAdapter(new ArrayList<>(), requireContext(), viewModel);
+                binding.sepetRv.setAdapter(adapter);
+            }
         });
+
 
 
         binding.imageViewSepetHome.setOnClickListener(v -> {

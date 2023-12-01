@@ -19,22 +19,33 @@ import com.example.bitirmeprojesi.ui.adapter.FavoriCardAdapter;
 import com.example.bitirmeprojesi.ui.viewmodel.FavoriViewModel;
 import com.example.bitirmeprojesi.ui.viewmodel.SepetViewModel;
 
+import java.util.ArrayList;
+
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
 public class FavoriFragment extends Fragment {
     private FragmentFavoriBinding binding;
     private FavoriViewModel viewModel;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentFavoriBinding.inflate(inflater,container,false);
+        binding = FragmentFavoriBinding.inflate(inflater, container, false);
         binding.favoriRv.setLayoutManager(new LinearLayoutManager(requireContext()));
 
+        binding.textViewFavBos.setText("Favori ürün listeniz boş.");
         viewModel.getFavList().observe(getViewLifecycleOwner(), favList -> {
-            Log.d("FavoriFragment", "Favori listesi güncellendi. Toplam öğe sayısı: " + favList.size());
-            FavoriCardAdapter adapter = new FavoriCardAdapter(favList, requireContext(), viewModel);
-            binding.favoriRv.setAdapter(adapter);
+            if (favList != null && favList.size() > 0) {
+                binding.textViewFavBos.setText("");
+                FavoriCardAdapter adapter = new FavoriCardAdapter(favList, requireContext(), viewModel);
+                binding.favoriRv.setAdapter(adapter);
+            } else {
+                binding.textViewFavBos.setText("Favori ürünün listeniz boş.");
+                FavoriCardAdapter adapter = new FavoriCardAdapter(new ArrayList<>(), requireContext(), viewModel);
+                binding.favoriRv.setAdapter(adapter);
+            }
+
         });
 
         binding.imageViewFavAnasayfa.setOnClickListener(v -> {
@@ -45,14 +56,15 @@ public class FavoriFragment extends Fragment {
         });
 
 
-
         return binding.getRoot();
     }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewModel = new ViewModelProvider(this).get(FavoriViewModel.class);
     }
+
     @Override
     public void onResume() {
         super.onResume();

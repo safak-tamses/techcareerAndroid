@@ -1,5 +1,7 @@
 package com.example.bitirmeprojesi.data.entity.DTO;
 
+import java.util.Objects;
+
 public class GcSepet {
     private String sepet_yemek_id;
     private String yemek_adi;
@@ -18,6 +20,19 @@ public class GcSepet {
         this.yemek_fiyat = yemek_fiyat;
         this.yemek_siparis_adet = yemek_siparis_adet;
         this.kullanici_adi = kullanici_adi;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GcSepet gcSepet = (GcSepet) o;
+        return sepet_yemek_id.equals(gcSepet.sepet_yemek_id) && yemek_adi.equals(gcSepet.yemek_adi) && yemek_resim_adi.equals(gcSepet.yemek_resim_adi) && yemek_fiyat.equals(gcSepet.yemek_fiyat) && yemek_siparis_adet.equals(gcSepet.yemek_siparis_adet) && kullanici_adi.equals(gcSepet.kullanici_adi);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(yemek_adi);
     }
 
     public String getSepet_yemek_id() {

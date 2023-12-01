@@ -27,6 +27,7 @@ public class AnasayfaViewModel extends ViewModel {
     private MutableLiveData<List<Yemekler>> yemeklerListesi;
     private MutableLiveData<List<Yemekler>> aramaSonucu = new MutableLiveData<>();
 
+
     private SepetDaoRepository srepo;
 
     @Inject
@@ -72,8 +73,8 @@ public class AnasayfaViewModel extends ViewModel {
 
     public LiveData<List<Yemekler>> getAramaSonucu(){ return aramaSonucu;}
 
-    public void favoriEkle(String adi,String resimAdi, int fiyat){
-        frepo.kaydet(adi,resimAdi,fiyat);
+    public boolean favoriEkle(String adi,String resimAdi, int fiyat){
+        return frepo.kaydet(adi,resimAdi,fiyat);
     }
 }
 

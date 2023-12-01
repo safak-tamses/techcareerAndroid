@@ -26,8 +26,8 @@ public class SepetViewModel extends ViewModel {
     public void sepetiYukle(){
         srepo.sepettekiYemekleriGetir();
     }
-    public void sepetiSil(int id){
-        srepo.sepettenUrunSil(id);
+    public void sepetiSil(String adi){
+        srepo.sepettenUrunSil(adi);
 //        sepetiYukle();
     }
     public MutableLiveData<List<GcSepet>> getSepetListesi(){
